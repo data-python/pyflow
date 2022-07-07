@@ -1,0 +1,4 @@
+*.js linguist-language=python
+*.html linguist-language=python
+*.vue linguist-language=python
+*.sql linguist-language=python

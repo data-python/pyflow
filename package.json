@@ -1,0 +1,49 @@
+{
+  "name": "pyflow",
+  "private": true,
+  "version": "1.0.0",
+  "description": "pyflow(常用Python脚本集的界面执行器, 没啥大用...)",
+  "author": "luo0412",
+  "scripts": {
+    "init": "npm install && run-script-os",
+    "init:macos": "python3 pyapp/spec/getSpec.py && python3 -m venv pyenv && ./pyenv/bin/pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r ./pyapp/requirements.txt",
+    "init:windows": "python pyapp\\spec\\getSpec.py && python -m venv pyenv\\pyenv && .\\pyenv\\pyenv\\Scripts\\pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r .\\pyapp\\requirements.txt",
+    "init:cef": "npm install && python pyapp\\spec\\getSpec.py && python -m venv pyenv\\pyenvCEF && .\\pyenv\\pyenvCEF\\Scripts\\pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r .\\pyapp\\requirements.txt && .\\pyenv\\pyenvCEF\\Scripts\\pip install -i https://pypi.tuna.tsinghua.edu.cn/simple cefpython3 && shx cp .\\pyapp\\hook-cefpython3.py .\\pyenv\\pyenvCEF\\Lib\\site-packages\\PyInstaller\\hooks",
+    "initfix": "pip install paramiko --target=./pyenv/pyenv/Lib/site-packages",
+    "initfix:cef": "pip install paramiko --target=./pyenv/pyenvCEF/Lib/site-packages",
+    "start": "run-script-os",
+    "start:macos": "./pyenv/bin/python -X dev ./pyapp/main.py",
+    "start:windows": ".\\pyenv\\pyenv\\Scripts\\python -X dev .\\pyapp\\main.py",
+    "start:cef": ".\\pyenv\\pyenvCEF\\Scripts\\python -X dev .\\pyapp\\mainCEF.py",
+    "dev": "vite",
+    "pre": "shx rm -rf build && vite build && run-script-os",
+    "pre:macos": "./pyenv/bin/pyinstaller -w --clean ./pyapp/spec/macos-pre.spec",
+    "pre:windows": ".\\pyenv\\pyenv\\Scripts\\pyinstaller -w --clean .\\pyapp\\spec\\windows-pre.spec",
+    "pre:cef": "shx rm -rf buildCEF && vite build && .\\pyenv\\pyenvCEF\\Scripts\\pyinstaller -w --clean .\\pyapp\\spec\\windows-pre-cef.spec && shx mv .\\build\\windows-pre-cef .\\buildCEF\\windows-pre-cef",
+    "pre:folder": "shx rm -rf build && vite build && .\\pyenv\\pyenv\\Scripts\\pyinstaller -w --clean .\\pyapp\\spec\\windows-folder-pre.spec",
+    "pre:folder:cef": "shx rm -rf buildCEF && vite build && .\\pyenv\\pyenvCEF\\Scripts\\pyinstaller -w --clean .\\pyapp\\spec\\windows-folder-pre-cef.spec && shx mv .\\build\\windows-folder-pre-cef .\\buildCEF\\windows-folder-pre-cef",
+    "build": "shx rm -rf build && vite build && run-script-os",
+    "build:macos": "./pyenv/bin/pyinstaller -w --clean ./pyapp/spec/macos.spec",
+    "build:windows": ".\\pyenv\\pyenv\\Scripts\\pyinstaller -w --clean .\\pyapp\\spec\\windows.spec",
+    "build:cef": "shx rm -rf buildCEF && vite build && .\\pyenv\\pyenvCEF\\Scripts\\pyinstaller -w --clean .\\pyapp\\spec\\windows-cef.spec && shx mv .\\build\\windows-pre-cef .\\buildCEF\\windows-pre-cef",
+    "build:folder": "shx rm -rf build && vite build && .\\pyenv\\pyenv\\Scripts\\pyinstaller -w --clean .\\pyapp\\spec\\windows-folder.spec",
+    "build:folder:cef": "shx rm -rf buildCEF && vite build && .\\pyenv\\pyenvCEF\\Scripts\\pyinstaller -w --clean .\\pyapp\\spec\\windows-folder-cef.spec && shx mv .\\build\\windows-folder-cef .\\buildCEF\\windows-folder-cef"
+  },
+  "dependencies": {
+    "ali-oss": "^6.17.1",
+    "moment": "^2.29.3",
+    "monaco-editor": "^0.33.0",
+    "nanoid": "^4.0.0",
+    "unplugin-vue-components": "^0.19.6",
+    "vditor": "^3.8.15",
+    "vue": "^3.2.25",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.30.2",
+    "@vitejs/plugin-vue": "^2.2.0",
+    "run-script-os": "^1.1.6",
+    "shx": "^0.3.4",
+    "vite": "^2.8.0"
+  }
+}

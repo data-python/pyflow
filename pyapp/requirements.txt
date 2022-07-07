@@ -1,0 +1,14 @@
+pywebview==3.6.3
+pyinstaller==4.10
+tinyaes==1.0.3
+PyPDF2==2.2.0
+removebg==0.04
+beautifulsoup4==4.9.2
+requests==2.24.0
+# paramiko==2.11.0
+handright==8.0.0
+Pillow==9.1.1
+gne==0.3.0
+# arrow==1.2.2
+tinydb==4.7.0
+# amzqr==0.0.1
