@@ -3,25 +3,23 @@
 
     <LayoutSider collapsible :collapsed-width="65" :width="280">
 
-      <div class="logo">
-        <Row>
-          <Col :span="8">
-          <Button type="text">导航定制</Button>
-          </Col>
-          <Col :span="8">
-          <Button type="text" @click="toggleDark">{{ !isDark ? "腹黑模式" : "停止腹黑" }}</Button>
-          </Col>
-          <Col :span="8">
-          <Button type="text" @click="openLink">手动更新</Button>
-          </Col>
-        </Row>
+      <Row class="logo">
+        <Col :span="8">
+        <Button type="text">导航定制</Button>
+        </Col>
+        <Col :span="8">
+        <Button type="text" @click="toggleDark">{{ !isDark ? "腹黑模式" : "停止腹黑" }}</Button>
+        </Col>
+        <Col :span="8">
+        <Button type="text" @click="openLink">手动更新</Button>
+        </Col>
+      </Row>
 
-      </div>
 
-          <Menu :style="{ width: '100%' }" @menu-item-click="onClickMenuItem">
-   
-   <SideItem :menu="menuList" />
-  
+      <Menu :style="{ width: '100%' }" @menu-item-click="onClickMenuItem">
+
+        <SideItem :menu="menuList" />
+
 
       </Menu>
 
